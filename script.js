@@ -16,39 +16,39 @@ updateTime();
 
 
 // Function to display the user's current location
-       function showLocation(position) {
-           const latitude = position.coords.latitude;
-           const longitude = position.coords.longitude;
+ function showLocation(position) {
+     const latitude = position.coords.latitude;
+     const longitude = position.coords.longitude;
 
-           // Display the location on the page
-           const locationElement = document.getElementById("location");
-           locationElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
-       }
+     // Display the location on the page
+     const locationElement = document.getElementById("location");
+     locationElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+ }
 
-       // Function to handle location retrieval error
-       function showError(error) {
-           const locationElement = document.getElementById("location");
-           switch (error.code) {
-               case error.PERMISSION_DENIED:
-                   locationElement.textContent = "User denied the request for geolocation.";
-                   break;
-               case error.POSITION_UNAVAILABLE:
-                   locationElement.textContent = "Location information is unavailable.";
-                   break;
-               case error.TIMEOUT:
-                   locationElement.textContent = "The request to get user location timed out.";
-                   break;
-               case error.UNKNOWN_ERROR:
-                   locationElement.textContent = "An unknown error occurred.";
-                   break;
-           }
-       }
+ // Function to handle location retrieval error
+ function showError(error) {
+     const locationElement = document.getElementById("location");
+     switch (error.code) {
+         case error.PERMISSION_DENIED:
+             locationElement.textContent = "User denied the request for geolocation.";
+             break;
+         case error.POSITION_UNAVAILABLE:
+             locationElement.textContent = "Location information is unavailable.";
+             break;
+         case error.TIMEOUT:
+             locationElement.textContent = "The request to get user location timed out.";
+             break;
+         case error.UNKNOWN_ERROR:
+             locationElement.textContent = "An unknown error occurred.";
+             break;
+     }
+ }
 
-       // Check if geolocation is supported by the browser
-       if ("geolocation" in navigator) {
-           // Get the user's location
-           navigator.geolocation.getCurrentPosition(showLocation, showError);
-       } else {
-           const locationElement = document.getElementById("location");
-           locationElement.textContent = "Geolocation is not supported by this browser.";
-       }
+ // Check if geolocation is supported by the browser
+ if ("geolocation" in navigator) {
+     // Get the user's location
+     navigator.geolocation.getCurrentPosition(showLocation, showError);
+ } else {
+     const locationElement = document.getElementById("location");
+     locationElement.textContent = "Geolocation is not supported by this browser.";
+ }
